@@ -9,7 +9,10 @@ Los ejercicios son un trabajo en progreso constante. Para contribuir puedes abri
 Escribir una función llamada `contrasenaValida` que reciba un string y retorne `true` si el string es igual a "2Fj(jjbFsuj" o "eoZiugBf&g9". De lo contrario debe retornar `false`.
 
 ```javascript
-// escribe tu respuesta acá
+const contrasenaValida = (password) => {
+  if (password === "2Fj(jjbFsuj" || password === "eoZiugBf&g9") return true;
+  else return false;
+}
 
 // código de prueba
 console.log(contrasenaValida("2Fj(jjbFsuj")) // true
@@ -23,7 +26,13 @@ console.log(contrasenaValuda("")) // false
 Escribir una función llamada `calcularImpuestos` que reciba dos argumentos numéricos: `edad` e `ingresos`. Si `edad` es igual o mayor a 18 y los ingresos son iguales o mayores a 1000 debe retornar `ingresos` * 40%. De lo contrario retornar 0.
 
 ```javascript
-// escribe tu respuesta acá
+const calcularImpuestos = (age, gains) => {
+  if (age >= 18 && gains >= 1000) {
+    return gains * 0.4;
+  } else {
+    return 0;
+  }
+}
 
 // código de prueba
 console.log(calcularImpuestos(18, 1000)) // 400
@@ -46,7 +55,22 @@ Escribir una función llamada `bmi` que reciba dos argumentos: peso y altura, y 
 * "Obeso" si es igual o mayor a 30
 
 ```javascript
-// escribe la función bmi acá
+const bmi = (weight, height) => {
+  let bmiNum = weight / Math.pow(height, 2);
+  
+  if (bmiNum < 18.5) {
+    return "Bajo de peso";
+    
+  } else if (bmiNum >= 18.5 && bmiNum < 25) {
+    return "Normal";
+    
+  } else if (bmiNum >= 25 && bmiNum < 30) {
+    return "Sobrepeso";
+    
+  } else {
+    return "Obeso"
+  }
+}
 
 // código de prueba
 console.log(bmi(65, 1.8)) // "Normal"
@@ -60,10 +84,13 @@ console.log(bmi(135, 1.7)) // "Obeso"
 Escribir una función llamada `imprimirArreglo` que reciba un arreglo e imprima cada elemento en una línea a parte:
 
 ```javascript
-// escribe tu respuesta acá
+const imprimirArreglo = (arr) => {
+  return arr.forEach(e => console.log(e));
+}
+
 
 // código de prueba
-console.log(imprimirArreglo(1, "Hola", 2, "Mundo"))
+console.log(imprimirArreglo([1, "Hola", 2, "Mundo"]))
 // 1
 // Hola
 // 2
@@ -83,7 +110,19 @@ Por ejemplo:
 Si el número es menor a 1000 se debe devolver el mismo número como un string.
 
 ```javascript
-// escribe tu respuesta acá
+const likes = (num) => {
+  const numString = num.toString();
+  
+  if (num < 1000) {
+    return numString;
+    
+  } else if (numString.length === 4 || numString.length === 5 || numString.length === 6) {
+    return `${Math.floor(num / 1000)}K`;
+    
+  } else if (numString.length > 6) {
+    return `${Math.floor(num / 1000000)}M`;
+  }
+}
 
 // código de prueba
 console.log(likes(983)) // "983"
@@ -103,7 +142,19 @@ Escribir una función llamada `fizzBuzz` que reciba un número y retorne un stri
 * Si no cumple ninguna de las condiciones anteriores debe retornar el mismo número.
 
 ```javascript
-// escribe tu respuesta acá
+const fizzBuzz = (num) => {
+
+  if (num % 5 === 0 && num % 3 === 0) {
+    return "fizzbuzz";
+    
+  } else if (num % 5 === 0) {
+    return "buzz";
+    
+  } else if (num % 3 === 0) {
+    return "fizz";
+    
+  } else return num;
+}
 
 // código de prueba
 console.log(fizzBuzz(6)); // "fizz"
@@ -119,7 +170,13 @@ Escribir una función llamada `contarRango` que reciba dos números y retorne cu
 **Nota:** Utiliza un ciclo en tu solución. Puedes asumir que el primer número va a ser menor que el segundo.
 
 ```javascript
-// escribe tu respuesta acá
+const contarRango = (n1, n2) => {
+  let sum = 0;
+  for (let i = n1 + 1; i < n2; i++) {
+    sum++;
+  }
+  return sum;
+}
 
 // código de prueba
 console.log(contarRango(1, 9)) // 7
@@ -134,12 +191,18 @@ Escribir una función llamada `sumarRango` que reciba dos argumentos: número in
 **Nota:** puedes asumir que el número inicial va a ser menor o igual que el número final.
 
 ```javascript
-// escribe tu respuesta acá
+const sumarRango = (n1, n2) => {
+  let sum = 0;
+  for (let i = n1; i <= n2; i++) {
+    sum += i;
+  }
+  return sum;
+}
 
 // código de prueba
 console.log(sumarRango(0, 10)) // 55
 console.log(sumarRango(12, 14)) // 39
-console.log(sumarRango(5, 5)) // 0
+console.log(sumarRango(5, 5)) // 10
 ```
 
 ## 9. Número de aes (letra "a")
@@ -147,7 +210,13 @@ console.log(sumarRango(5, 5)) // 0
 Escribir una función llamada `numeroDeAes` que reciba un string y retorne el número de veces que aparece la letra "a":
 
 ```javascript
-// escribe tu respuesta acá
+const numeroDeAes = (word) => {
+  let count = 0;
+  for (let i = 0; i <= word.length; i++) {
+    word[i] === "a" ? count += 1 : null 
+  }
+  return count;
+}
 
 // código de prueba
 console.log(numeroDeAes("abracadabra")) // 5
@@ -160,7 +229,15 @@ console.log(numeroDeAes("")) // 0
 Escribir una función llamada `numeroDeCaracteres` que reciba un string y un caracter (un string de un caracter). La función debe retornar el número de veces que aparece el caracter en el string.
 
 ```javascript
-// escribe tu respuesta acá
+const numeroDeCaracteres = (word, letter) => {
+  let count = 0;
+  
+  for (let i = 0; i <= word.length; i++) {
+    word[i] === letter ? count += 1 : null;
+  }
+
+  return count;
+}
 
 // código de prueba
 console.log(numeroDeCaracteres("Hola Mundo", "o")) // 2
@@ -173,7 +250,11 @@ console.log(numeroDeCaracteres("eeee", e)) // 4
 Escribir una función llamada `sumarArreglo` que reciba un arreglo de números y retorne la suma de todos los elementos.
 
 ```javascript
-// escribe tu respuesta acá
+const sumarArreglo = (arr) => {
+  let count = 0;
+  arr.forEach(num => count += num);
+  return count;
+}
 
 // código de prueba
 console.log(sumarArreglo([3, 1, 2])) // 6
@@ -186,7 +267,10 @@ console.log(sumarArreglo([])) // 0
 Escribir una función llamada `multiplicarArreglo` que reciba un arreglo de números y retorne la multiplicación de todos los elementos.
 
 ```javascript
-// escribe tu respuesta acá
+const multiplicarArreglo = (arr) => {
+return arr.reduce((acc, num) => acc * num, 1)
+}
+
 
 // código de prueba
 console.log(multiplicarArreglo([4, 1, 2, 3])) // 24
@@ -199,7 +283,9 @@ console.log(multiplicarArreglo([])) // 1
 Escribir una función llamada `removerCeros` que reciba un arreglo de números y retorne un nuevo arreglo excluyendo los ceros (0).
 
 ```javascript
-// escribe tu respuesta acá
+const removerCeros = (arr) => {
+  return arr.filter(num => num !== 0)
+}
 
 // código de prueba
 console.log(removerCeros([0, 1, 0, 2, 0, 3])) // [1, 2, 3]
@@ -214,7 +300,13 @@ Escribir una función llamada `sumarArreglo` que reciba tres argumentos: un arre
 **Nota:** puedes asumir que la posición inicial va a ser menor o igual a la posición final, y que están dentro de los límites del arreglo.
 
 ```javascript
-// escribe tu respuesta acá
+const sumarArreglo = (arr, start, end) => {
+  let sum = 0;
+  for (let i = start; i <= end; i++) {
+    sum += arr[i];
+  }
+  return sum;
+}
 
 // código de prueba
 console.log(sumarArreglo([1, 2, 3], 1, 2)) // 5
@@ -234,7 +326,17 @@ Los complementos son los siguientes:
 * A -> U
 
 ```javascript
-// escribe tu función acá
+const transcribir = (word) => {
+  const replacements = {
+    "A": "U",
+    "G": "C",
+    "C": "G",
+    "T": "A"
+  };
+
+  return word.split("").map(letter => replacements[letter] || letter).join("");
+};
+
 
 // código de prueba
 console.log(transcribir("ACGT")) // "UGCA"
